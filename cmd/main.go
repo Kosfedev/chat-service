@@ -21,7 +21,7 @@ const (
 
 // NewChatData is ...
 type NewChatData struct {
-	chatnames []string `json:"chatnames"`
+	Usernames []string `json:"usernames"`
 }
 
 // NewMessageData is ...
@@ -32,13 +32,13 @@ type NewMessageData struct {
 }
 
 func createChatHandler(w http.ResponseWriter, r *http.Request) {
-	newchat := &NewChatData{}
-	if err := json.NewDecoder(r.Body).Decode(newchat); err != nil {
+	newChat := &NewChatData{}
+	if err := json.NewDecoder(r.Body).Decode(newChat); err != nil {
 		http.Error(w, "Failed to decode new chat data", http.StatusBadRequest)
 		return
 	}
 
-	id := createChat(newchat)
+	id := createChat(newChat)
 
 	fmt.Println("new chat id:", id)
 }
@@ -46,7 +46,7 @@ func createChatHandler(w http.ResponseWriter, r *http.Request) {
 func createChat(chat *NewChatData) int64 {
 	id := generatechatID()
 
-	fmt.Printf("new chat data: %+v\n", *chat)
+	fmt.Printf("new chat data: %+v\n", chat.Usernames)
 
 	return id
 }
