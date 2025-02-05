@@ -7,5 +7,7 @@ import (
 )
 
 func main() {
-	fmt.Println(color.GreenString("Hello, world!"))
+	const testUrl = "https://www.google-analytics.com/analytics.php"
+
+	fmt.Println(color.GreenString(testUrl))
 }
