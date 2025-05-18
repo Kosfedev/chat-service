@@ -26,7 +26,7 @@ func CreateChatHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	id := nBig.Int64()
 	fmt.Println("new chat id:", id)
-	fmt.Printf("new chat data: %+v\n", newChat.Usernames)
+	fmt.Printf("new chat data: %#v\n", newChat.Usernames)
 }
 
 func DeleteChatHandler(w http.ResponseWriter, r *http.Request) {
@@ -40,7 +40,7 @@ func DeleteChatHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("delete chat id: %v\n", chatID)
 }
 
-func SendMessageHandler(w http.ResponseWriter, r *http.Request) {
+func CreateMessageHandler(w http.ResponseWriter, r *http.Request) {
 	newMessageData := &types.NewMessageData{}
 	chatIDStr := chi.URLParam(r, "id")
 	chatID, err := strconv.ParseInt(chatIDStr, 10, 64)

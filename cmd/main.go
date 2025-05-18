@@ -20,7 +20,7 @@ func main() {
 	r := chi.NewRouter()
 	r.Post(chatsPostfix, handlers.CreateChatHandler)
 	r.Delete(chatPostfix, handlers.DeleteChatHandler)
-	r.Post(chatPostfix, handlers.SendMessageHandler)
+	r.Post(chatPostfix, handlers.CreateMessageHandler)
 
 	server := http.Server{
 		Addr:         baseURL,
