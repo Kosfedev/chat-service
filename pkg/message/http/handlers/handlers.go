@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-chi/chi"
 
-	"github.com/olezhek28/microservices_course_boilerplate/pkg/message/http/types"
+	"github.com/Kosfedev/chat-service/pkg/message/http/types"
 )
 
 func CreateChatHandler(w http.ResponseWriter, r *http.Request) {

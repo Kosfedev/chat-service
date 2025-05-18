@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-chi/chi"
 
-	"github.com/olezhek28/microservices_course_boilerplate/pkg/message/http/handlers"
+	"github.com/Kosfedev/chat-service/pkg/message/http/handlers"
 )
 
 const (
