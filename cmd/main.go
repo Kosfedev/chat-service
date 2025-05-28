@@ -14,6 +14,8 @@ import (
 
 	descChat "github.com/Kosfedev/chat-service/pkg/chat/gRPC"
 	grpcChatServer "github.com/Kosfedev/chat-service/pkg/chat/gRPC/server"
+	descMessage "github.com/Kosfedev/chat-service/pkg/message/gRPC"
+	grpcMessageServer "github.com/Kosfedev/chat-service/pkg/message/gRPC/server"
 	"github.com/Kosfedev/chat-service/pkg/message/http/handlers"
 )
 
@@ -71,7 +73,8 @@ func runGRPCServer() error {
 
 	s := grpc.NewServer()
 	reflection.Register(s)
-	descChat.RegisterChatV1Server(s, &grpcChatServer.Server{})
+	descChat.RegisterChatV1Server(s, grpcChatServer.NewServer())
+	descMessage.RegisterMessageV1Server(s, grpcMessageServer.NewServer())
 
 	log.Printf("gRPC server listening on: %d\n", grpcPort)
 	return s.Serve(lis)
