@@ -16,18 +16,21 @@ type server struct {
 	desc.UnimplementedMessageV1Server
 }
 
+// NewServer is...
 func NewServer() desc.MessageV1Server {
 	return &server{}
 }
 
-func (s *server) Create(ctx context.Context, req *desc.CreateRequest) (*desc.CreateResponse, error) {
+// Create is...
+func (s *server) Create(_ context.Context, req *desc.CreateRequest) (*desc.CreateResponse, error) {
 	log.Printf("chat id: %d\n", req.GetChatId())
 	log.Printf("message text: %v\n", req.GetText())
 
 	return &desc.CreateResponse{Id: gofakeit.Int64()}, nil
 }
 
-func (s *server) Get(ctx context.Context, req *desc.GetRequest) (*desc.GetResponse, error) {
+// Get is...
+func (s *server) Get(_ context.Context, req *desc.GetRequest) (*desc.GetResponse, error) {
 	log.Printf("message id: %d\n", req.GetId())
 
 	return &desc.GetResponse{
@@ -40,7 +43,8 @@ func (s *server) Get(ctx context.Context, req *desc.GetRequest) (*desc.GetRespon
 	}, nil
 }
 
-func (s *server) List(ctx context.Context, req *desc.ListRequest) (*desc.ListResponse, error) {
+// List is...
+func (s *server) List(_ context.Context, req *desc.ListRequest) (*desc.ListResponse, error) {
 	log.Printf("message ids: %d\n", req.GetIds())
 
 	return &desc.ListResponse{
@@ -71,14 +75,16 @@ func (s *server) List(ctx context.Context, req *desc.ListRequest) (*desc.ListRes
 	}, nil
 }
 
-func (s *server) Update(ctx context.Context, req *desc.UpdateRequest) (*emptypb.Empty, error) {
+// Update is...
+func (s *server) Update(_ context.Context, req *desc.UpdateRequest) (*emptypb.Empty, error) {
 	log.Printf("message id: %d\n", req.GetId())
 	log.Printf("message text: %v\n", req.GetText())
 
 	return nil, nil
 }
 
-func (s *server) Delete(ctx context.Context, req *desc.DeleteRequest) (*emptypb.Empty, error) {
+// Delete is...
+func (s *server) Delete(_ context.Context, req *desc.DeleteRequest) (*emptypb.Empty, error) {
 	log.Printf("message id: %d\n", req.GetId())
 
 	return nil, nil

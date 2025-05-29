@@ -13,6 +13,7 @@ import (
 	"github.com/Kosfedev/chat-service/pkg/message/http/types"
 )
 
+// CreateChatHandler is...
 func CreateChatHandler(w http.ResponseWriter, r *http.Request) {
 	newChat := &types.NewChatData{}
 	if err := json.NewDecoder(r.Body).Decode(newChat); err != nil {
@@ -29,6 +30,7 @@ func CreateChatHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("new chat data: %#v\n", newChat.Usernames)
 }
 
+// DeleteChatHandler is...
 func DeleteChatHandler(w http.ResponseWriter, r *http.Request) {
 	chatIDStr := chi.URLParam(r, "id")
 	chatID, err := strconv.ParseInt(chatIDStr, 10, 64)
@@ -40,6 +42,7 @@ func DeleteChatHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("delete chat id: %v\n", chatID)
 }
 
+// CreateMessageHandler is...
 func CreateMessageHandler(w http.ResponseWriter, r *http.Request) {
 	newMessageData := &types.NewMessageData{}
 	chatIDStr := chi.URLParam(r, "id")

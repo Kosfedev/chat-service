@@ -15,17 +15,20 @@ type server struct {
 	desc.UnimplementedChatV1Server
 }
 
+// NewServer is...
 func NewServer() desc.ChatV1Server {
 	return &server{}
 }
 
-func (s *server) Create(ctx context.Context, req *desc.CreateRequest) (*desc.CreateResponse, error) {
+// Create is...
+func (s *server) Create(_ context.Context, req *desc.CreateRequest) (*desc.CreateResponse, error) {
 	log.Printf("chat name: %v\n", req.GetName())
 
 	return &desc.CreateResponse{Id: gofakeit.Int64()}, nil
 }
 
-func (s *server) Get(ctx context.Context, req *desc.GetRequest) (*desc.GetResponse, error) {
+// Get is...
+func (s *server) Get(_ context.Context, req *desc.GetRequest) (*desc.GetResponse, error) {
 	log.Printf("user id: %d\n", req.GetId())
 
 	return &desc.GetResponse{
@@ -38,7 +41,8 @@ func (s *server) Get(ctx context.Context, req *desc.GetRequest) (*desc.GetRespon
 	}, nil
 }
 
-func (s *server) List(ctx context.Context, req *desc.ListRequest) (*desc.ListResponse, error) {
+// List is...
+func (s *server) List(_ context.Context, req *desc.ListRequest) (*desc.ListResponse, error) {
 	log.Printf("user id: %v\n", req.GetUserId())
 	log.Printf("user name: %v\n", req.GetName())
 
@@ -56,26 +60,30 @@ func (s *server) List(ctx context.Context, req *desc.ListRequest) (*desc.ListRes
 	}, nil
 }
 
-func (s *server) Update(ctx context.Context, req *desc.UpdateRequest) (*emptypb.Empty, error) {
+// Update is...
+func (s *server) Update(_ context.Context, req *desc.UpdateRequest) (*emptypb.Empty, error) {
 	log.Printf("user id: %d\n", req.GetId())
 	log.Printf("user name: %v\n", req.GetName())
 
 	return nil, nil
 }
 
-func (s *server) Delete(ctx context.Context, req *desc.DeleteRequest) (*emptypb.Empty, error) {
+// Delete is...
+func (s *server) Delete(_ context.Context, req *desc.DeleteRequest) (*emptypb.Empty, error) {
 	log.Printf("user id: %d\n", req.GetId())
 
 	return nil, nil
 }
 
-func (s *server) AddUser(ctx context.Context, req *desc.AddUserRequest) (*emptypb.Empty, error) {
+// AddUser is...
+func (s *server) AddUser(_ context.Context, req *desc.AddUserRequest) (*emptypb.Empty, error) {
 	log.Printf("user id: %d\n", req.GetUserId())
 
 	return nil, nil
 }
 
-func (s *server) RemoveUser(ctx context.Context, req *desc.RemoveUserRequest) (*emptypb.Empty, error) {
+// RemoveUser is...
+func (s *server) RemoveUser(_ context.Context, req *desc.RemoveUserRequest) (*emptypb.Empty, error) {
 	log.Printf("user id: %d\n", req.GetUserId())
 
 	return nil, nil
